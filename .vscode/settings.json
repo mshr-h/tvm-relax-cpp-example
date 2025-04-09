@@ -1,0 +1,9 @@
+{
+  "files.associations": {
+    "*.py": "python",
+    "ostream": "cpp"
+  },
+  "python.analysis.extraPaths": [
+    "./3rdparty/tvm/python"
+  ]
+}
