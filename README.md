@@ -2,6 +2,8 @@
 
 This repository provides a minimal example for deploying Apache TVM's Relax IR using the C++ API.
 
+> **Note:** This project only supports **[the latest TVM FFI](https://github.com/apache/tvm/pull/17920)**.
+
 ## Overview
 
 This project demonstrates how to build and deploy a Relax IR model using TVM's C++ API. It includes instructions for setting up dependencies, building TVM from source, and running the example binary.
@@ -10,7 +12,7 @@ This project demonstrates how to build and deploy a Relax IR model using TVM's C
 
 Ensure the following tools and libraries are installed on your system:
 
-- **CMake** (version 3.13 or higher)
+- **CMake**
 - **Ninja** (build system)
 - **Python** (for virtual environment setup)
 - **LLVM** (with `llvm-config` available in your `PATH`)
@@ -65,4 +67,25 @@ After building the project, run the example binary:
 
 ```bash
 ./build/main
+```
+
+You'll see the output below:
+
+```
+Module(type_key= relax.VMExecutable)
+Found vm_load_executable()
+Found vm_initialization()
+vm initialized
+Found main()
+Input array initialized
+output: 
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
 ```

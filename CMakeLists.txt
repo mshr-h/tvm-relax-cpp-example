@@ -9,6 +9,7 @@ add_executable(main main.cc)
 
 target_include_directories(main PUBLIC
   ${CMAKE_SOURCE_DIR}/3rdparty/tvm/include
+  ${CMAKE_SOURCE_DIR}/3rdparty/tvm/ffi/include
   ${CMAKE_SOURCE_DIR}/3rdparty/tvm/3rdparty/dlpack/include
   ${CMAKE_SOURCE_DIR}/3rdparty/tvm/3rdparty/dmlc-core/include
 )
