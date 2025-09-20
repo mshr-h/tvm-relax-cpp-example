@@ -41,7 +41,7 @@ executable.export_library("compiled_artifact.so")
 
 dev = tvm.cpu()
 vm = relax.VirtualMachine(executable, dev)
-data: tvm.runtime.NDArray = tvm.nd.array(np.array([[1, 2, 3], [1, 2, 3]], dtype=np.int32),
+data: tvm.runtime.Tensor = tvm.runtime.tensor(np.array([[1, 2, 3], [1, 2, 3]], dtype=np.int32),
                                          device=dev)
 cpu_out = vm["main"](data).numpy()
 print(cpu_out)

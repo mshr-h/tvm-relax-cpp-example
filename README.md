@@ -2,7 +2,7 @@
 
 This repository provides a minimal example for deploying Apache TVM's Relax IR using the C++ API.
 
-> **Note:** This project only supports **[the latest TVM FFI](https://github.com/apache/tvm/pull/17920)**.
+> **Note:** This project supports **[Apache TVM FFI](https://github.com/apache/tvm-ffi)**.
 
 ## Overview
 
@@ -72,7 +72,6 @@ After building the project, run the example binary:
 You'll see the output below:
 
 ```
-Module(type_key= relax.VMExecutable)
 Found vm_load_executable()
 Found vm_initialization()
 vm initialized

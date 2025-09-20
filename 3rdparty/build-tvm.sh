@@ -76,5 +76,10 @@ git submodule sync && git submodule update --init --recursive
 cmake -S . -B build -G Ninja $build_options
 cmake --build build
 
+# install tvm-ffi
+pushd 3rdparty/tvm-ffi
+$PIP_COMMAND install -e .
+popd
+
 # install python package
-$PIP_COMMAND install -e python --config-setting editable-mode=compat
+$PIP_COMMAND install -e python --config-setting editable=compat
