@@ -6,7 +6,7 @@ set -e
 
 source_dir="tvm"
 branch="main"
-build_options="-DUSE_MLIR=ON -DUSE_CPP_RPC=ON"
+build_options="-G Ninja; -DUSE_MLIR=ON; -DUSE_CPP_RPC=ON;"
 use_llvm="ON"
 clean_build_dir=0
 if command -v uv &> /dev/null; then
@@ -33,15 +33,15 @@ while test $# -gt 0; do
       ;;
     --cuda)
       shift
-      build_options+=" -DUSE_CUDA=ON -DUSE_TENSORRT_CODEGEN=ON"
+      build_options+="-DUSE_CUDA=ON; -DUSE_TENSORRT_CODEGEN=ON;"
       ;;
     --msc)
       shift
-      build_options+=" -DUSE_MSC=ON"
+      build_options+="-DUSE_MSC=ON;"
       ;;
     --papi)
       shift
-      build_options+=" -DUSE_PAPI=ON"
+      build_options+="-DUSE_PAPI=ON;"
       ;;
     --llvm)
       shift
@@ -54,7 +54,7 @@ while test $# -gt 0; do
 done
 
 # llvm config
-build_options+=" -DUSE_LLVM=$use_llvm"
+build_options+="-DUSE_LLVM=$use_llvm;"
 
 # clone repo or pull
 if [ -d "$source_dir" ]; then
@@ -73,13 +73,7 @@ if [ "$clean_build_dir" -ne 0 ]; then
 fi
 echo "Build Options: $build_options"
 git submodule sync && git submodule update --init --recursive
-cmake -S . -B build -G Ninja $build_options
-cmake --build build
-
-# install tvm-ffi
-pushd 3rdparty/tvm-ffi
-$PIP_COMMAND install -e .
-popd
 
 # install python package
-$PIP_COMMAND install -e python --config-setting editable=compat
+$PIP_COMMAND install --editable 3rdparty/tvm-ffi --verbose --config-setting editable=compat
+$PIP_COMMAND install --editable . --verbose --config-setting editable=compat --config-settings=cmake.args="$build_options"
