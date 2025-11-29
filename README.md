@@ -12,9 +12,9 @@ This project demonstrates how to build and deploy a Relax IR model using TVM's C
 
 Ensure the following tools and libraries are installed on your system:
 
+- **uv**
 - **CMake**
 - **Ninja** (build system)
-- **Python** (for virtual environment setup)
 - **LLVM** (with `llvm-config` available in your `PATH`)
 
 ## Building TVM from Source
@@ -23,13 +23,13 @@ Follow these steps to build TVM from source:
 
 1. **Set up a Python virtual environment**:
    ```bash
-   python3 -m venv .venv
+   uv venv
    source .venv/bin/activate
    ```
 
 2. **Install required Python packages**:
    ```bash
-   pip install cmake ninja setuptools cython
+   uv pip install cmake ninja setuptools cython
    ```
 
 3. **Build TVM**:

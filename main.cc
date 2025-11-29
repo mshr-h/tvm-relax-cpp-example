@@ -51,14 +51,14 @@ int main()
 
   // Create and initialize the input array
   tvm::ffi::Tensor input = tvm::ffi::Tensor::FromNDAlloc(CPUNDAlloc(), {3, 3}, {kDLInt, 32, 1}, device);
-  int numel = input.shape()->Product();
+  int numel = input.shape().Product();
   for (int i = 0; i < numel; ++i)
-    static_cast<int *>(input->data)[i] = i;
+    static_cast<int *>(input.data_ptr())[i] = i;
   std::cout << "Input array initialized" << std::endl;
 
   // Run the main function
   tvm::ffi::Tensor output = (*main)(input).cast<tvm::ffi::Tensor>();
   std::cout << "output: " << std::endl;
   for (int i = 0; i < numel; ++i)
-    std::cout << "  " << static_cast<int *>(output->data)[i] << std::endl;
+    std::cout << "  " << static_cast<int *>(output.data_ptr())[i] << std::endl;
 }

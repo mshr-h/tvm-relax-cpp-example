@@ -62,7 +62,15 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "format": "cpp",
-    "text_encoding": "cpp"
+    "text_encoding": "cpp",
+    "chrono": "cpp",
+    "forward_list": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "source_location": "cpp",
+    "fstream": "cpp",
+    "semaphore": "cpp",
+    "cinttypes": "cpp"
   },
   "python.analysis.extraPaths": [
     "./3rdparty/tvm/python"
